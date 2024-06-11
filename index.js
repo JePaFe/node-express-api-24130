@@ -6,6 +6,14 @@ const path = require("path");
 // Middleware para archivos estáticos y públicos
 app.use(express.static(path.join(__dirname, "public")));
 
+// app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+// const productosRouter = require("./routes/productos.router.js");
+// app.use("/productos", productosRouter);
+
+app.use("/productos", require("./routes/productos.router"));
+
 // Ruta principal, la pagina de inicio
 // http://localhost:3000/
 app.get("/", (req, res) => {
